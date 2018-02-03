@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% block title %}Customers List{% endblock %}
+
+
+{% block body %}
+         <a class="nav-link" href="/">Home</a>
+         <a class="nav-link active" href="/records">Project</a>
+         <a class="nav-link" href="/about">About</a>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+    
+    <h2>Customers List</h2>
+    <br>
+    <div class="row">
+    <h5><a href="{% url 'customer_new' %}">+ Add Customer</a></h5>
+    </div>
+    <table class="table table-hover">
+            <thead class="thead-inverse">
+                    <tr>
+                            
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Gallons</th>
+                            
+                          </tr>
+            </thead>
+            <tbody>
+            <!--
+            <tbody>
+                    <tr>
+                      <td>Argentina</td>
+                      <td>Spanish (official), English, Italian, German, French</td>
+                      <td>41,803,125</td>
+                      <td>31.3</td>
+                      <td>2,780,387</td>
+                    </tr>
+                    <tr>
+                      <td>Australia</td>
+                      <td>English 79%, native and other languages</td>
+                      <td>23,630,169</td>
+                      <td>37.3</td>
+                      <td>7,739,983</td>
+                    </tr>
+                    <tr>
+                      <td>Greece</td>
+                      <td>Greek 99% (official), English, French</td>
+                      <td>11,128,404</td>
+                      <td>43.2</td>
+                      <td>131,956</td>
+                    </tr>
+                    <tr>
+                      <td>Luxembourg</td>
+                      <td>Luxermbourgish (national) French, German (both administrative)</td>
+                      <td>536,761</td>
+                      <td>39.1</td>
+                      <td>2,586</td>
+                    </tr>
+                    <tr>
+                      <td>Russia</td>
+                      <td>Russian, others</td>
+                      <td>142,467,651</td>
+                      <td>38.4</td>
+                      <td>17,076,310</td>
+                    </tr>
+                    <tr>
+                      <td>Sweden</td>
+                      <td>Swedish, small Sami- and Finnish-speaking minorities</td>
+                      <td>9,631,261</td>
+                      <td>41.1</td>
+                      <td>449,954</td>
+                    </tr>
+                  </tbody>
+                -->
+                   
+    {% for customer in object_list %}
+    
+        <tr>
+            <td><a href="{% url 'customer_detail' customer.pk %}">{{ customer.first_name }}</a></td>
+            <td>{{ customer.address }}</td>
+            <td>{{ customer.gallon_code }}</td>
+        </tr>
+    
+    <!--    
+    <div class="row">
+    <div class="col-md-4">
+    <a href="{% url 'customer_detail' customer.pk %}">{{ customer.first_name }}</a>
+    </div>
+
+    <div class="col-6">
+       {{ customer.address }}
+    </div>
+
+    <div class="col">
+        {{ customer.gallon_code }}
+    </div>
+    </div>
+-->
+    {% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+
+{% endblock %}

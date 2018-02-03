@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+         <a class="nav-link" href="/">Home</a>
+         <a class="nav-link active" href="/records">Project</a>
+         <a class="nav-link" href="/about">About</a>
+{% endblock %}
+
+{% block content %}
+    <div class="customer-entry">
+        <h2>{{customer.address}}</h2>
+        <p>{{customer.gallon_code}}</p>
+    </div>
+    <p><a href="{% url 'customer_edit' customer.pk %}">+ Edit Details</a></p>
+    <p><a href="{% url 'customer_delete' customer.pk %}">- Delete this!</a></p>
+{% endblock %}
